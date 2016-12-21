@@ -38,7 +38,27 @@ var Tree = function(value) {
 };
 
 Tree.prototype.countLeaves = function () {
-  // TODO: implement me!
+//start with a variable that counts how many leaves we find, start it at 0
+var leaves = 0;
+//check each branch of the tree individually
+var checkBranches = function(branch) {
+  //check if it has children
+  if (branch.children.length === 0) {
+    //if it doesn't, increase our count by one
+    leaves++;
+    //if it does, 
+  } else {
+    //go through each child
+    for(var i = 0; i < branch.children.length; i++) {
+      //and perform the same check on each child
+      checkBranches(branch.children[i])
+    }     
+  }
+};
+//start our check off with our tree
+checkBranches(this)
+//return our count
+return leaves;
 };
 
 /**

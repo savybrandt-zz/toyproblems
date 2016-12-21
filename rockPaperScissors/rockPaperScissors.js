@@ -20,7 +20,6 @@
 var rockPaperScissors = function (rounds) {
 	var throws = ['rock', 'paper', 'scissors'];
 	var results = [];
-	var resultCount = 0;
 
 	var roundGenerator = function() {
 	  var round = [];
@@ -30,12 +29,18 @@ var rockPaperScissors = function (rounds) {
 			round.push(randomThrow);
 			rounds--;
 		}
+		//check if this is our first time running roundGenerator, if so just add round to results
+		if(results.length === 0) {
+		  results.push(round);
+		  roundGenerator();
+		}
 		//check if that round already exists in our results array
 		var flag = true;
 
 		for (var i = 0; i < results.length; i++) {
 		  var resultCheck = results[i];
-			for (var j = 0; j < resultCheck.length; i++) {
+		  
+			for (var j = 0; j < resultCheck.length; j++) {
 				if (resultCheck[j] === round[j]) {
 					flag = false;
 				}
@@ -45,16 +50,27 @@ var rockPaperScissors = function (rounds) {
 			//if it doesnt, add it to our array if it does rerun roundGenerator
 			if (flag) {
 				results.push(round);
-				resultCount++
 			} else {
 			  roundGenerator()
 			}
 		}
 	};
 	//check if we've gotten all results, if yes return, if not run roundGenerator
-	if (resultCount === 27) {
+	if (results.length === Math.pow(rounds, rounds)) {
 		return results;
 	} else {
 		roundGenerator()
 	}
 };
+
+var rockPaperScissors = function(rounds) {
+	var throws = ['rock', 'paper', 'scissors'];
+	var results = [];
+	var generateResults = function() {
+		for (var i = 0; i < throws.length; i++) {
+			var round = ['rock']
+			round.push
+		}
+	}
+	return results;
+}
