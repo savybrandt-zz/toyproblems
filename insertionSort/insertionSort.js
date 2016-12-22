@@ -49,7 +49,7 @@ var insertionSort = function(array) {
 	//iterate through the array
 	for (var i = 0; i < array.length; i++) {
 		//compare the curent to the next value up
-		if (var array[i] > array[i+1]) {
+		if (array[i] > array[i+1]) {
 		//if it is smaller switch their indexes
 			var first = array[i]
 			var second = array[i + 1]
