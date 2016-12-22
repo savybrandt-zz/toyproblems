@@ -45,8 +45,18 @@ var testingTransform = function(array) {
   return transform;
 };
 
-var insertionSort = function(array
-) {
-  // Your code goes here. Feel free to add helper functions if needed.
+var insertionSort = function(array) {
+	//iterate through the array
+	for (var i = 0; i < array.length; i++) {
+		//compare the curent to the next value up
+		if (var array[i] > array[i+1]) {
+		//if it is smaller switch their indexes
+			var first = array[i]
+			var second = array[i + 1]
+			array[i] = second
+			array[i + 1] = first;
+		}
+	//if not conitnue
+	}
   return array;
 };
