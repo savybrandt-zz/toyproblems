@@ -48,23 +48,25 @@ var characterFrequency = function(string) {
 		var currentLetter = letters[i];
 		//check if our result array is empty
 		if (result.length === 0) {
-				//if so create a new pair
-				var newPair = [currentLetter, 1];
-				//and add to result array
-				result.push(newPair)
-		}
-
-		for (var j = 0; j < result.length; j++) {
-			var currentPair = result[j]
-			//check if we have a existing array for our current letter
-			if (currentLetter === currentPair[0]) {
-				//if so increase the count
-				currentPair[1]++
-			} else {
-				//if not create one 
-				var newPair = [currentLetter, 1];
-				//and add to result array
-				result.push(newPair)
+				//if so create a new pair and add to result array
+				result.push([currentLetter, 1])
+		} else {	
+			var newLetter = true;
+			//otherwise go through our results		
+			for (var j = 0; j < result.length; j++) {
+				var currentPair = result[j]
+				//check if we have a existing array for our current letter
+				if (currentLetter === currentPair[0]) {
+					//if so increase the count
+					currentPair[1]++
+					//mar it as not a new letter
+					newLetter = false;
+				}
+			} 
+			//if current letter is a new letter
+			if (newLetter) {
+			//create a new pair and add to result array
+			result.push([currentLetter, 1])
 			}
 		}
 	}
