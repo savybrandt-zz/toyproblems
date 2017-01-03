@@ -17,60 +17,36 @@
 *
 */
 
-var rockPaperScissors = function (rounds) {
-	var throws = ['rock', 'paper', 'scissors'];
-	var results = [];
-
-	var roundGenerator = function() {
-	  var round = [];
-		//create random possible outcome for a 3 round game
-		while (rounds > 0) {
-			var randomThrow = throws[Math.floor(Math.random() * throws.length)];
-			round.push(randomThrow);
-			rounds--;
-		}
-		//check if this is our first time running roundGenerator, if so just add round to results
-		if(results.length === 0) {
-		  results.push(round);
-		  roundGenerator();
-		}
-		//check if that round already exists in our results array
-		var flag = true;
-
-		for (var i = 0; i < results.length; i++) {
-		  var resultCheck = results[i];
-		  
-			for (var j = 0; j < resultCheck.length; j++) {
-				if (resultCheck[j] === round[j]) {
-					flag = false;
-				}
-			}
-			//dubug- ***flag at this point is currently coming up as undefined when it should be true or false***
-
-			//if it doesnt, add it to our array if it does rerun roundGenerator
-			if (flag) {
-				results.push(round);
-			} else {
-			  roundGenerator()
-			}
-		}
-	};
-	//check if we've gotten all results, if yes return, if not run roundGenerator
-	if (results.length === Math.pow(rounds, rounds)) {
-		return results;
-	} else {
-		roundGenerator()
+var rockPaperScissors = function(rounds) {
+	//define our play options
+var plays = ['rock', 'paper', 'scissors'];
+//create a results array to hold our results
+var results = [];
+//define a recursive function to get results
+var getResults = function(roundsLeft, currentRound) {
+	//base case: if we've run through every round
+	if (roundsLeft === 0) {
+		//add current round to our results
+		results.push(currentRound);
+		//stop
+		return;
+	}
+	//subtract 1 from our rounds left
+	roundsLeft--
+	//go through each play option
+	
+	for (var i = 0; i < plays.length; i++) {
+		//add i play to our current round
+		debugger;
+		currentRound.push(plays[i])
+		//call recursive function
+		getResults(roundsLeft, currentRound)
+		//reset our current round
+		currentRound.pop() //(affecting results)
 	}
 };
-
-var rockPaperScissors = function(rounds) {
-	var throws = ['rock', 'paper', 'scissors'];
-	var results = [];
-	var generateResults = function() {
-		for (var i = 0; i < throws.length; i++) {
-			var round = ['rock']
-			round.push
-		}
-	}
-	return results;
-}
+//initiate recursive function
+getResults(rounds, []);
+//return results
+return results;
+};

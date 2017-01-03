@@ -48,14 +48,16 @@ var testingTransform = function(array) {
 var insertionSort = function(array) {
 	//iterate through the array
 	for (var i = 0; i < array.length; i++) {
+		var current = var[i];
 		//compare the curent to the next value up
-		if (array[i] > array[i+1]) {
-		//if it is smaller switch their indexes
-			var first = array[i]
-			var second = array[i + 1]
-			array[i] = second
-			array[i + 1] = first;
-		}
+		for (var j = i; j > 0; j--) {
+			if (current < array[j]) {
+			//if it is smaller switch their indexes
+				var old = array[j];
+				array[j] = current 
+				array[j + 1] = old;
+			}
+		}	
 	//if not conitnue
 	}
   return array;
