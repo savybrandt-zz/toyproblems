@@ -43,6 +43,7 @@ var characterFrequency = function(string) {
 	var letters = string.split('');
 
 	//get the count for each letter =>
+
 	//go through each letter
 	for (var i = 0; i < letters.length; i++) {
 		var currentLetter = letters[i];
@@ -51,15 +52,16 @@ var characterFrequency = function(string) {
 				//if so create a new pair and add to result array
 				result.push([currentLetter, 1])
 		} else {	
+			//assume this is our first encounter of current letter
 			var newLetter = true;
 			//otherwise go through our results		
 			for (var j = 0; j < result.length; j++) {
 				var currentPair = result[j]
-				//check if we have a existing array for our current letter
+				//check if we have an existing pair for our current letter
 				if (currentLetter === currentPair[0]) {
 					//if so increase the count
 					currentPair[1]++
-					//mar it as not a new letter
+					//mark it as not a new letter
 					newLetter = false;
 				}
 			} 
@@ -71,10 +73,24 @@ var characterFrequency = function(string) {
 		}
 	}
 
-	//sort our results array =>
-	//go through each pair in our array starting with the second pair
-		//check if current pair count is larger than the previous
-			//if so swap them and check against  the next pair
+	//sort our result array =>
+
+	//create a sorter function for count
+	var countSort = function(a, b) {
+   if (a[1] > b[1]) return -1;
+   if (a[1] < b[1]) return 1;
+   return 0;
+	}
+	//create a sorter function for letters
+	var letterSort = function(a, b) {
+   if (a[0] < b[0] && a[1] >= b[1]) { return -1 }
+   if (a[0] > b[0] && a[1] <= b[1]) { return 1 }
+   return 0;
+	}
+	//use array.sort with our sorter functions
+	var countSorted = result.sort(countSort);
+
+	var result = countSorted.sort(letterSort);
 
 	//return result array
   return result;
