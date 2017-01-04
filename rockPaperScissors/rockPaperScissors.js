@@ -37,12 +37,9 @@ var getResults = function(roundsLeft, currentRound) {
 	
 	for (var i = 0; i < plays.length; i++) {
 		//add i play to our current round
-		debugger;
-		currentRound.push(plays[i])
+		var round = plays[i];
 		//call recursive function
-		getResults(roundsLeft, currentRound)
-		//reset our current round
-		currentRound.pop() //(affecting results)
+		getResults(roundsLeft, currentRound.concat(round))
 	}
 };
 //initiate recursive function

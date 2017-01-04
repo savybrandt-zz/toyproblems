@@ -47,8 +47,9 @@ var testingTransform = function(array) {
 
 var insertionSort = function(array) {
 	//iterate through the array
-	for (var i = 0; i < array.length; i++) {
+	for (var i = 1; i < array.length; i++) {
 		var current = var[i];
+		var spot = i;
 		//compare the curent to the next value up
 		for (var j = i; j > 0; j--) {
 			if (current < array[j]) {
