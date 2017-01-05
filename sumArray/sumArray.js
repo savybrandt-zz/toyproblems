@@ -11,4 +11,18 @@
 
 // Solved in O(n) time with O(1) memory
 var sumArray = function(array) {
+	var sums = [];
+	for (var i = 0; i < array.length; i++) {		
+	  var number = array[i];
+	  sums.push(number);
+		var rest = array
+		rest.splice(i, 1);
+		for (var j = 0; j < rest.length; j++) {
+			number += rest[j];
+			sums.push(number)
+		}
+	}
+	var result = Math.max(...sums);
+	return result;
 };
+
