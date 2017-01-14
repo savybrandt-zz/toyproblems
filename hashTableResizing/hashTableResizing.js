@@ -41,8 +41,9 @@ var resize = function(size, storageLimit) {
     storage[newKey] = storage[newKey] || [];
     if (storage[newKey].length > 0){
       storage[newKey].forEach(function(tuple) {
-      if (tuple[0] === key) {
-        tuple[1] = value;
+        if (tuple[0] === key) {
+          tuple[1] = value;
+        }
       }
     } else {
       storage[newKey].push(newTuple); 
