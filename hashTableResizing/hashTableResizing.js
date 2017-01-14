@@ -39,7 +39,14 @@ var resize = function(size, storageLimit) {
     var newKey = getIndexBelowMaxForKey(key, storageLimit);
     var newTuple = [key, value];
     storage[newKey] = storage[newKey] || [];
-    storage[newKey].push(newTuple);
+    if (storage[newKey].length > 0){
+      storage[newKey].forEach(function(tuple) {
+      if (tuple[0] === key) {
+        tuple[1] = value;
+      }
+    } else {
+      storage[newKey].push(newTuple); 
+    }
     size++
     resize();
   };
@@ -48,14 +55,15 @@ var resize = function(size, storageLimit) {
     var newKey = getIndexBelowMaxForKey(key, storageLimit);
     if (storage[newKey].length === 1) {
       return storage[newKey]
-    } else {
-      forEach(storage[newKey], function(tuple) {
+    } else if (storage[newKey].length > 1){
+      storage[newKey].forEach(function(tuple) {
         if (tuple[0] === key) {
           return tuple;
         }
       })
+    } else {
+      return undefined;
     }
-
   };
 
   result.remove = function(key) {
@@ -67,7 +75,7 @@ var resize = function(size, storageLimit) {
     } else {
       storage[newKey].forEach(function(tuple) {
         if (tuple[0] === key) {
-           tuple = undefined;
+          delete tuple;
           size--;
           return;
         }
