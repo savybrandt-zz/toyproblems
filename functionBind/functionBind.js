@@ -1,4 +1,4 @@
-/*
+ /*
  * function bind():
  *
  * example 1:
@@ -23,9 +23,8 @@
  *
 */
 
-var bind = function(
-) {
-  // TODO: Your code here
+var bind = function(func, binding) {
+	//
 };
 
 /*

@@ -54,5 +54,9 @@ var numbersToPlace = {
 };
 
 Number.prototype.toEnglish = function () {
-  // return my value as english words
+  //create an array to hold diffrent parts of our english translation
+  //check if our number > 10
+    //if it isn't- unshift it onto our array and return it 
+    //if it is- divide our number by 10
+  //return a combined version of our translation array
 };
