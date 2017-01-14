@@ -65,7 +65,7 @@ var resize = function(size, storageLimit) {
       size--;
       return;
     } else {
-      forEach(storage[newKey], function(tuple) {
+      storage[newKey].forEach(function(tuple) {
         if (tuple[0] === key) {
            tuple = undefined;
           size--;
