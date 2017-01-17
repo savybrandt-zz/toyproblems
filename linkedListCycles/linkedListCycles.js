@@ -38,20 +38,18 @@ var Node = function(value) {
 	//* input is a node object
 	//* output is a boolean value 
 var hasCycle = function(linkedList) {
-	var passedNodes = [];
 	var loop = false;
-	var checkNode = function(currentNode, passedNodes) {
-		if (passedNodes.indexOf(currentNode.value) !== -1) {
-			loop = true;
-			return;
+	var checkNodes = function(pointer1, pointer2) {
+		if (pointer1 === pointer2) {
+			loop = true
+			return
+		} 
+		if (pointer2 === null) {
+		  loop = false;
+		  return;
 		}
-		if (currentNode.next === null) {
-			loop = false;
-			return;
-		}
-		passedNodes.push(currentNode.value)
-		checkNode(currentNode.next, passedNodes)
+		checkNodes(pointer1.next, pointer2.next.next)
 	}
-	checkNode(linkedList, passedNodes)
+	checkNodes(linkedList, linkedList.next)
 	return loop;
 };
