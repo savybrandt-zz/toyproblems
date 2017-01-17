@@ -35,6 +35,23 @@ var Node = function(value) {
   return { value: value, next: null };
 };
 
+	//* input is a node object
+	//* output is a boolean value 
 var hasCycle = function(linkedList) {
-  // TODO: implement me!
+	var passedNodes = [];
+	var loop = false;
+	var checkNode = function(currentNode, passedNodes) {
+		if (passedNodes.indexOf(currentNode.value) !== -1) {
+			loop = true;
+			return;
+		}
+		if (currentNode.next === null) {
+			loop = false;
+			return;
+		}
+		passedNodes.push(currentNode.value)
+		checkNode(currentNode.next, passedNodes)
+	}
+	checkNode(linkedList, passedNodes)
+	return loop;
 };
