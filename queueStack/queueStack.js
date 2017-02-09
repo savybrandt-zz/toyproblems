@@ -35,26 +35,22 @@ var Queue = function() {
   // Use two `stack` instances to implement your `queue` Class
   var inbox = new Stack();
   var outbox = new Stack();
-  this.storage = inbox.size;
 
   // called to add an item to the `queue`
   this.enqueue = function(value) {
     inbox.push(value)
-    this.storage.push(value)
     // TODO: implement `enqueue`
   };
 
   // called to remove an item from the `queue`
   this.dequeue = function() {
-    outbox.push(this.storage[outbox.size])
-    delete this.storage[outbox.size]
-    inbox.pop()
+    outbox.push(inbox.storage[outbox.size])
     // TODO: implement `dequeue`
   };
 
   // should return the number of items in the queue
   this.size = function() {
-    return inbox.size
+    return inbox.size - outbox.size
     // TODO: implement `size`
   };
 };
