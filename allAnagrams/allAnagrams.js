@@ -13,5 +13,19 @@
   */
 
 var allAnagrams = function(string) {
-  // Your code here.
+	var results = [];
+	var makeAnagrams = function(current, length, start) {
+		if(length === 0) {
+			results.push(current)
+			return;
+		}
+		start++
+		length--
+		for (var i = start; i < string.length; i++) {
+			makeAnagrams(current.concat(string[i]), length, start)
+		}
+	}
+	makeAnagrams('', string.length, -1)
+	return results;
 };
+

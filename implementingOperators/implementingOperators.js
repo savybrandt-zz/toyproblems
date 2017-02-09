@@ -11,15 +11,38 @@
 
 
 var multiply = function(x, y) {
-  // TODO: should return the product of x * y
+	var result = 0
+	while (y > 0) {
+		result+= x
+		y--;
+	}
+	return result
 };
 
 var divide = function(x, y) {
-  // TODO: should return the quotient of x / y
+	var result = 0
+	var count = 0
+	while (count < x) {
+		result++
+		count += y
+	} if (count === x) {
+		return result
+	} else {
+		//take the modulo and add it on to the end of our result as a decimal
+	}
 };
 
+
 var modulo = function(x, y) {
-  // TODO: should return the remainder of x / y
+	var count = 0
+	while (count < x) {
+		count += y
+	}
+	if(count === x) {
+		return 0;
+	} else {
+		return x-(count - y);
+	}
 };
 
 

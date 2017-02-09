@@ -51,9 +51,25 @@ Tree.prototype.getClosestCommonAncestor = function(/*...*/
   * 3.) me.getAncestorPath(me) -> [me]
   * 4.) grandma.getAncestorPath(H R Giger) -> null
   */
-Tree.prototype.getAncestorPath = function(/*...*/
-) {
-  // TODO: implement me!
+Tree.prototype.getAncestorPath = function(child) {
+  if(!this.isDescendant(child)) {
+    return null;
+  } else {
+    var findPath = function(ancestor, path) {
+      if(path[path.length] === child) {
+        return path;
+      }
+      if(path[path.length] === null) {
+        path = [];
+        return
+      }
+      for(var i = 0; i < ancestor.children.length; i++) {
+        path.push(ancestor.children[i])
+        findPath(ancestor.children[i], path)
+      }
+    }
+    findPath(this, [this])
+  }
 };
 
 /**

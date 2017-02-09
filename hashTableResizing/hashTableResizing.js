@@ -48,6 +48,7 @@ var resize = function(size, storageLimit) {
     } else {
       storage[newKey].push(newTuple); 
     }
+          //use replaced for resizing
     size++
     resize();
   };

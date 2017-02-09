@@ -20,19 +20,50 @@ var makeHashTable = function() {
   var result = {};
   var storage = [];
   var storageLimit = 1000;
-  result.insert = function(/*...*/ 
-) {
-    // TODO: implement `insert()`
+
+  result.insert = function(key, val) {
+    var hash = getIndexBelowMaxForKey(key, storageLimit);
+    var bucket = storage[hash];
+    if(!bucket) {
+      storage.push(hash);
+    }
+    storage[hash].push([key, val]);
   };
 
-  result.retrieve = function(/*...*/ 
-) {
-    // TODO: implement `retrieve()`
+  result.retrieve = function(key) {
+    var hash = getIndexBelowMaxForKey(key, storageLimit);
+    var val = null;
+    var bucket = storage[hash];
+
+    if(bucket.length === 1) {
+      val = bucket[0][1];
+    } else {
+      for(var i = 0; i < bucket.length; i++) {
+        if(bucket[i][0] === key) {
+          val = bucket[i][1]
+        }
+      }
+    }
+    return val;
   };
 
-  result.remove = function(/*...*/ 
-) {
-    // TODO: implement `remove()`
+  result.remove = function(key) {
+    var hash = getIndexBelowMaxForKey(key, storageLimit);
+    var val = null;
+    var bucket = storage[hash];
+
+    if(bucket.length === 1) {
+      val = bucket[0][1];
+      delete bucket[0];
+    } else {
+      for(var i = 0; i < bucket.length; i++) {
+        if(bucket[i][0] === key) {
+          val = bucket[i][1]
+          delete bucket[i]
+        }
+      }
+    }
+    return val;
   };
 
   return result;

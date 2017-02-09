@@ -22,15 +22,18 @@
  * // item4 is removed to make room, because it is the oldest by usage,
  * // which takes priority.
  * cache.set("item5", 5);
+* cache.get("item4") //=> null
  *
  * // item3 is also removed, because it was retrieved before item2 was
  * // last retrieved.
  * cache.set("item6", 6);
+* cache.get("item3") //=> null
  *
  * You will need a doubly-linked list (provided).
  */
 
 var LRUCache = function (limit) {
+  this.limit = limit;
 };
 
 var LRUCacheItem = function (val, key) {
@@ -40,9 +43,13 @@ LRUCache.prototype.size = function () {
 };
 
 LRUCache.prototype.get = function (key) {
+  //return value
+  //move value to top of list
 };
 
 LRUCache.prototype.set = function (key, val) {
+  //delete current value at bottom of list
+  //add new value to bottom of list
 };
 
 
