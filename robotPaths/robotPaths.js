@@ -17,7 +17,7 @@ var makeBoard = function(n) {
     board.push([]);
     for (var j = 0; j < n; j++) {
       board[i].push(false);
-    }
+    }.
   }
   board.togglePiece = function(i, j) {
     this[i][j] = !this[i][j];
@@ -29,5 +29,11 @@ var makeBoard = function(n) {
 };
 
 var robotPaths = function(n, board, i, j) {
+  //base case
+  //out of bounds, already visited = no path
+  //success square = found path
+  //toggle the piece and continue
+  
+  //return the board to its original state
 };
 

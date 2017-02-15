@@ -79,7 +79,35 @@ BinaryHeap.prototype.getRoot = function () {
 }
 
 BinaryHeap.prototype.insert = function (value) {
-  // TODO: Your code here
+  this._heap.push(value)
+  var sibling = this._heap[this._heap.indexOf(child) - 1])
+	var parent = this._heap[(this._heap.indexOf(child) - 1)/2]
+
+  var sort = function(child, parent, sibling) {
+  	var swapped = false;
+
+	  if(this._compare(child, sibling) {
+	  	if(this._compare(child, parent)) {
+	  		oldParent = parent;
+	  		parent = child;
+	  		child = oldParent;
+	  		swapped = true
+	  	}
+	  } else {
+	  	if(this._compare(sibling, parent)) {
+	  		oldParent = parent;
+	  		parent = sibling;
+	  		sibling = oldParent;
+	  		swapped = true
+	  	}
+	  }
+  	if(swapped) {
+  		sort(child, parent, sibling)
+  	} else {
+  		sort(parent, this._heap[(this._heap.indexOf(parent) - 1)/2, this._heap[this._heap.indexOf(parent) - 1])
+  	}
+  }
+  sort(value, parent, sibling)
 }
 
 BinaryHeap.prototype.removeRoot = function () {
