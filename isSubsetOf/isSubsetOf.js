@@ -22,5 +22,20 @@
 */
 
 Array.prototype.isSubsetOf = function (arr) {
-  // your code here
+	//create a flag var and start as false
+	var flag = false;
+  //for each item in this array,
+  this.forEach(function(item) {
+  	//chek the indexof against the input array
+  	if(arr.indexOf(item !== -1)) {
+		  //if input array cointains, 
+		  //change flag to true
+  		flag = true;
+  	} else {
+  		//otherwise change flag to false
+  		flag = false;
+  	}
+  })
+  return flag
+  //return flag
 };
