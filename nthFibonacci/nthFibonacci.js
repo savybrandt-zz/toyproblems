@@ -21,8 +21,21 @@
  */
 
 var nthFibonacci = function (n) {
-  // TODO: implement me!
+	var fib = [0, 1];
+	var result;
+   var findFib = function(fib) {
+   		if (n+1 === fib.length) {
+   			result = fib[n]
+   			return
+   		}
+   		newNum = fib[fib.length-1] + fib[fib.length-2]
+   		fib.push(newNum)
+   		findFib(fib)
+   }
+   findFib(fib)
+   return result;
 };
+
 
 
 
