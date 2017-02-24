@@ -9,5 +9,16 @@
 
 
 var largestProductOfThree = function(array) {
-  // TODO: everything
+  var result = 0
+  var findCombos = function(currentCombo) {
+  	if(currentCombo.length === 3) {
+  		var product = currentCombo.reduce(function(a,b){return a*b})
+  		if(product > result) {
+  			result = product;
+  		}
+  	}
+  
+  }
+  findCombos([])
+  return result;
 };

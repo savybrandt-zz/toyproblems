@@ -12,4 +12,22 @@
   *
   */
 var deepEquals = function(apple, orange) {
+  var flag = true
+  //go through the objects and check that they all have the same keys
+  var checkObj = function(obj1, obj2) {
+    for (key in obj1) {
+      if(!obj2[key]) {
+        flag = false
+      } else if ( obj1[key] !== obj2[key]) {
+        flag = false
+      } else if ( typeof obj1[key] !== typeof obj2[key]) {
+        flag = false
+      } else if (typeof obj1[key] === 'object') {
+        checkObj(obj1[key], obj2[key])
+      } 
+    }
+  }
+  checkObj(apple, orange)
+  return flag;
+  //check that all the values are the same
 };
