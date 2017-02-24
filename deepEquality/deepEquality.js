@@ -18,12 +18,12 @@ var deepEquals = function(apple, orange) {
     for (key in obj1) {
       if(!obj2[key]) {
         flag = false
-      } else if ( obj1[key] !== obj2[key]) {
-        flag = false
       } else if ( typeof obj1[key] !== typeof obj2[key]) {
         flag = false
       } else if (typeof obj1[key] === 'object') {
         checkObj(obj1[key], obj2[key])
+      } else if ( obj1[key] !== obj2[key]) {
+        flag = false
       } 
     }
   }
