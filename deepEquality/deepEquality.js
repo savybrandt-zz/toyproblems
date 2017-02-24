@@ -13,9 +13,8 @@
   */
 var deepEquals = function(apple, orange) {
   var flag = true
-  //go through the objects and check that they all have the same keys
   var checkObj = function(obj1, obj2) {
-    for (key in obj1) {
+    for (var key in obj1) {
       if(!obj2[key]) {
         flag = false
       } else if ( Object.keys(obj1).length !== Object.keys(obj2).length) {
@@ -31,5 +30,4 @@ var deepEquals = function(apple, orange) {
   }
   checkObj(apple, orange)
   return flag;
-  //check that all the values are the same
 };
