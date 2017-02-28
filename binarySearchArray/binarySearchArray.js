@@ -9,5 +9,22 @@
  */
 
 var binarySearch = function (array, target) {
+	var result;
+	var findTarget = function(beginning, end) {
+		var midpoint = Math.floor(((end - beginning) / 2) + beginning)
+		if(array[midpoint] === target ) {
+			result = midpoint;
+			return;
+		}
+		if(target > array[midpoint]) {
+			findTarget(midpoint, end);
+		}
+		if(target < array[midpoint]) {
+			findTarget(beginning, midpoint);
+		}
+	};
+	findTarget(0, array.length);
+	return result;
 };
+
 

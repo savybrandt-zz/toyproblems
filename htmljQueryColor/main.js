@@ -5,12 +5,27 @@ $(function() {
   // becomes: <p><span>Hey</span><span>there</span></p>
   // HINT: the `split` array method is your friend
 
-  // TODO: your code here!
-
+$('p').text().split('')
+		.forEach(function(word) {
+		var span = $("<span></span>").text(word); 
+		$( "p" ).append(span)
+	})
 
   // --------------STEP 2--------------
   // Next, change spans to random colors, once per second
 
-  // TODO: your code here!
+  var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+
+  var changeColor = function() {
+	  setTimeout(function() {
+	  	var color = colors[Math.floor(Math.random() * colors.length)]
+	  	$('span').css("color", color)
+	  	console.log(color)
+	  	changeColor()
+	  }, 1000)
+	}
+
+	changeColor();
+
 
 });
