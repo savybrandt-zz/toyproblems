@@ -39,7 +39,23 @@ var Tree = function(value) {
 
 Tree.prototype.BFSelect = function(filter) {
   // return an array of values for which the function filter(value, depth) returns true
+  var result = []
+  var arrayify = function(branch, depth) {
+    if (filter(branch.value, depth)) {
+      result.push(branch.value)
+    }
+    if(branch.children.length === 0) {
+      return
+    }
+    depth++
+    for(var i = 0; i < branch.children.length; i++) {
+      arrayify(branch.children[i], depth)
+    }
+  }
+  arrayify(this, 0)
+  return result;
 };
+
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
