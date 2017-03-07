@@ -16,6 +16,27 @@
  */
 
 var rotatedArraySearch = function (rotated, target) {
-  // Your code here:
+  var binarySearch = function(start, end) {
+  	var midpoint = Math.floor(((end-start)/2) + start);
+  	if(rotated[start] > rotated[end]) {
+  		if(rotated[start] > target) {
+  			binarySearch(start, midpoint);
+  		} else {
+  			binarySearch(midpoint, end);
+  		}
+  	}
+  	if(rotated[midpoint] === target) {
+  		return midpoint;
+  	}
+  	if(start === end) {
+  		return null;
+  	}
+  	if(target < rotated[midpoint]) {
+  			binarySearch(start, midpoint);
+  		} else {
+  			binarySearch(midpoint, end);
+  		}
+  }
+  return binarySearch(0, rotated.length)
 };
 
