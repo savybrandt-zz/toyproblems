@@ -10,22 +10,21 @@ The input is assumed to be a 32-bit signed integer. Your function should return 
 
 var reverse = function(x) {
     var num = x.toString();
-    var result = [];
-    if (num[0] === '-') {
-        result = ['-'];
-        for (var i = num.length-1; i > 0; i--) {
-            if (num[i] > 0 || result.length > 1) { result.push(num[i]) }
-        }
-    } else {
-        for (var j = num.length-1; j >= 0; j--) {
-            if (num[j] > 0 || result.length > 0) { result.push(num[j]) }
-        }
+    var result;
+    num[0] === '-' ? result = ['-'] : result = [];
+
+    for (var j = num.length-1; j >= 0; j--) {
+        result.push(num[j]);
     }
+    
+    if (result[result.length -1] === '-') {
+        result.pop();
+    }
+
     result = Number(result.join(''));
     
     if( result > 2147483647 || result < -2147483647) {
-        return 0;
-    } else {
-        return result;
-    }
+        result = 0;
+    } 
+    return result;
 };
