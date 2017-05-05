@@ -28,3 +28,20 @@ var reverse = function(x) {
     } 
     return result;
 };
+
+// OLEG'S SOLUTION
+
+var reverse = function(x) {
+    var num = x.toString();
+    
+    var result = num[0] === '-' ? num.splice(0,1) : '';
+    for (var i = num.length-1; i >= 0; i--) {
+      result = result + num[i] 
+    }
+    
+    result = Number(result)
+    if ( result > 2147483647 || result < -2147483647 ) {
+      return 0;
+    }
+    return result;
+};
